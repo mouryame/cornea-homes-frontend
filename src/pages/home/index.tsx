@@ -1,6 +1,7 @@
 import React from "react";
 import useTheme from "../../redux/hooks/useTheme";
 import useFetch from "../../utils/hooks/useFetch";
+import UnstyledButton from "../../../components/unstyled/button/button";
 
 export default function Home() {
   const { loading, data, error } = useFetch("http://localhost:9000/api/users");
@@ -15,6 +16,7 @@ export default function Home() {
   }
   return (
     <div>
+      <UnstyledButton className="bannu">Click</UnstyledButton>
       {data?.data?.map((item) => (
         <div key={item.id}>{item.name}</div>
       ))}
