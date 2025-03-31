@@ -1,9 +1,11 @@
-import React from "react";
-import useTheme from "../../redux/hooks/useTheme";
+import React, { useState } from "react";
 import useFetch from "../../utils/hooks/useFetch";
 import UnstyledButton from "../../components/unstyled/button/button";
+import UnstyledPopup from "../../components/unstyled/popup/popup";
+import UnstyledSlider from "../../components/unstyled/slider/slider";
 
 export default function Home() {
+  const [open, setOpen] = useState(false);
   const { loading, data, error } = useFetch("http://localhost:9000/api/users");
 
   if (loading) {
@@ -16,7 +18,16 @@ export default function Home() {
   }
   return (
     <div>
-      <UnstyledButton className="bannu">Click</UnstyledButton>
+      <UnstyledButton className="bannu" onClick={() => setOpen(true)}>
+        Click
+      </UnstyledButton>
+      <UnstyledSlider
+        open={open}
+        direction="right"
+        onClose={() => setOpen(false)}
+      >
+        <div>Slider content</div>
+      </UnstyledSlider>
       {data?.data?.map((item) => (
         <div key={item.id}>{item.name}</div>
       ))}
