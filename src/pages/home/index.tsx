@@ -1,7 +1,7 @@
 import React from "react";
 import useTheme from "../../redux/hooks/useTheme";
 import useFetch from "../../utils/hooks/useFetch";
-import UnstyledButton from "../../../components/unstyled/button/button";
+import UnstyledButton from "../../components/unstyled/button/button";
 
 export default function Home() {
   const { loading, data, error } = useFetch("http://localhost:9000/api/users");
